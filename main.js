@@ -26,8 +26,8 @@ function getHumanChoice(){
 }
 
 function playRound(humanSelection, computerSelection){
-    humanSelection = humanSelection.tpUpperCase();
-    const roundWinner = "noOne";
+    humanSelection = humanSelection.toUpperCase();
+    let roundWinner = "noOne";
     switch (humanSelection) {
         case "ROCK":
             switch (computerSelection){
@@ -36,12 +36,12 @@ function playRound(humanSelection, computerSelection){
                     break;
                 
                 case "PAPER":
-                    roundWinner = "computer";
+                    roundWinner = "Computer";
                     computerScore++;
                     break;
                 
                 case "SCISSORS":
-                    roundWinner = "you"
+                    roundWinner = "You"
                     humanScore++;
                     break;
             }
@@ -89,13 +89,13 @@ function playRound(humanSelection, computerSelection){
 }
 
 function playGame(){
-    let finalWinner = "noOne"
     for(let i = 0; i < 5; i++){
         const humanSelection = getHumanChoice();
         const computerSelection = getComputerChoice();
         playRound(humanSelection, computerSelection);
-
+        
     }
+    let finalWinner = "noOne";
     if (humanScore == computerScore){
         finalWinner = "Draw";
     }
@@ -103,7 +103,8 @@ function playGame(){
         finalWinner = humanScore < computerScore ? "The computer" : "You";
     }
 
-    console.log("Your score: " + humanScore + " The computer score: " + computerScore );
+    console.log("Your score: " + humanScore + "/5");
+    console.log("The computer score: " + computerScore + "/5");
     console.log("The final winner is: " + finalWinner);
 
 }
